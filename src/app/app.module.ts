@@ -7,12 +7,18 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
+import { ModalPage } from '../app/home/autoComp';
 import { AppRoutingModule } from './app-routing.module';
+import { Network } from '@ionic-native/network';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from '@ionic-native/native-geocoder/ngx';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent,ModalPage],
+  entryComponents: [ModalPage],
   imports: [
+    FormsModule,
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule
@@ -20,7 +26,11 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    Geolocation,
+    NativeGeocoder,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+
+    
   ],
   bootstrap: [AppComponent]
 })
