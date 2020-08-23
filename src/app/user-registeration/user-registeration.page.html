@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>User Registeration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form_">
+    <form [formGroup]="form_detail">
+      <ion-item>
+        <ion-label class="label__" position="fixed">Username</ion-label>
+        <ion-input type="text" formControlName="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="label__" position="fixed">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="label__" position="fixed">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="label__" position="fixed">Phone</ion-label>
+        <ion-input type="text" formControlName="phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="label__" position="fixed">First name</ion-label>
+        <ion-input type="text" formControlName="first_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="label__" position="fixed">Last name</ion-label>
+        <ion-input type="text" formControlName="last_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Company Name</ion-label>
+        <ion-input type="text" formControlName="companyName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Alternate Person Name</ion-label>
+        <ion-input
+          type="text"
+          formControlName="AlternatePersonName"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="label__" position="fixed"
+          >Alternate Person Contact</ion-label
+        >
+        <ion-input
+          type="text"
+          formControlName="AlternatePersonContact"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label class="label__" position="fixed">PAN Number</ion-label>
+        <ion-input type="text" formControlName="PanNumber"></ion-input>
+      </ion-item>
+    </form>
+  </div>
+
+  <div class="register_done" *ngIf="register_done">
+    <p class="congrats">
+      CONGRATULATION !
+    </p>
+
+    <p class="p_success">
+      Thanks for signing up to RED Transports we are excited to have you with
+      us.
+    </p>
+    <p class="p_success">
+      You have joined the largest truck transportation network with loads and
+      unload facility. Online freight matching services to get idea about truck.
+    </p>
+    <p class="p_success">
+      Important account information is sent on your email address and it needs
+      to be verified before we can send sensitive information.
+    </p>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          size="full"
+          [disabled]="!form_detail.valid"
+          (click)="Add_New_registeration()"
+          >Submit</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

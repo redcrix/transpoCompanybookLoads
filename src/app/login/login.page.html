@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form_detail">
+    <div class="login_box">
+      <ion-label position="fixed">Email</ion-label>
+      <ion-input
+        required
+        type="email"
+        formControlName="username"
+        placeholder="Username"
+      ></ion-input>
+    </div>
+
+    <div class="login_box">
+      <ion-label position="fixed">Email</ion-label>
+      <ion-input
+        required
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+      ></ion-input>
+    </div>
+  </form>
+
+  <div class="col_">
+    <ion-button (click)="Login_()" class="login_btn">
+      Login
+    </ion-button>
+  </div>
+</ion-content>

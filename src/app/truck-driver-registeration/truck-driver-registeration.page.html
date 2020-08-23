@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Truck Driver Signup</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form_">
+    <form [formGroup]="form_detail">
+      <ion-item>
+        <ion-label position="fixed">First name</ion-label>
+        <ion-input type="text" formControlName="first_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Last name</ion-label>
+        <ion-input type="text" formControlName="last_name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Username</ion-label>
+        <ion-input type="email" formControlName="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Email</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Phone</ion-label>
+        <ion-input type="text" formControlName="phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Company Name</ion-label>
+        <ion-input type="text" formControlName="companyName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Truck Owner Name</ion-label>
+        <ion-input type="text" formControlName="OwnerName"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Truck Type</ion-label>
+        <ion-input type="text" formControlName="TruckType"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Truck Owner City</ion-label>
+        <ion-input type="text" formControlName="OwnerCity"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Truck Owner Mobile</ion-label>
+        <ion-input type="text" formControlName="TruckOwnerMobile"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Truck Owner Email</ion-label>
+        <ion-input type="text" formControlName="TruckOwnerEmail"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Truck Owner Address</ion-label>
+        <ion-input type="text" formControlName="TruckOwnerAddress"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed"
+          >Normally you operate on which route</ion-label
+        >
+        <ion-input type="text" formControlName="RouteOperate"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Enter Truck Permit State</ion-label>
+        <ion-input type="text" formControlName="PermitState"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed">Truck Owner - How many trucks?</ion-label>
+        <ion-input type="text" formControlName="HowManyTrucks"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="fixed"
+          >Truck Insurance provider and validity</ion-label
+        >
+        <ion-input type="text" formControlName="InsuranceType"></ion-input>
+      </ion-item>
+
+      <div class="More_trucks">
+        <p class="More Trucks">More trucks</p>
+        <ion-item>
+          <ion-label position="fixed">Truck Owner Name</ion-label>
+          <ion-input type="text" formControlName="OwnerName1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Truck Type</ion-label>
+          <ion-input type="text" formControlName="TruckType1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Truck Owner City</ion-label>
+          <ion-input type="text" formControlName="OwnerCity1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Truck Owner Mobile</ion-label>
+          <ion-input
+            type="text"
+            formControlName="TruckOwnerMobile1"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Truck Owner Email</ion-label>
+          <ion-input type="text" formControlName="TruckOwnerEmail1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Truck Owner Address</ion-label>
+          <ion-input
+            type="text"
+            formControlName="TruckOwnerAddress1"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed"
+            >Normally you operate on which route</ion-label
+          >
+          <ion-input type="text" formControlName="RouteOperate1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Enter Truck Permit State</ion-label>
+          <ion-input type="text" formControlName="PermitState1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed">Truck Owner - How many trucks?</ion-label>
+          <ion-input type="text" formControlName="HowManyTrucks1"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="fixed"
+            >Truck Insurance provider and validity</ion-label
+          >
+          <ion-input type="text" formControlName="InsuranceType1"></ion-input>
+        </ion-item>
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col>
+        <ion-button
+          size="full"
+          [disabled]="!form_detail.valid"
+          (click)="Add_New_registeration()"
+          >Submit</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>POST YOUR LOAD</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <p class="title_">
+    POST YOUR LOAD TO GET MORE SUITABLE TRUCK ]
+  </p>
+  <form [formGroup]="form_detail">
+    <ion-item>
+      <ion-label position="fixed">Enter Source City</ion-label>
+      <ion-input required type="text" formControlName="source_city"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Enter Destination City</ion-label>
+      <ion-input required type="text" formControlName="dest_city"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Number of Required Trucks</ion-label>
+      <ion-input
+        required
+        type="text"
+        formControlName="required_trucks"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Select Material Type</ion-label>
+      <ion-select
+        formControlName="required_trucks"
+        placeholder="Choose Load Material"
+        (ionChange)="selectMaterial(required_trucks)"
+      >
+        <ion-select-option *ngFor="let x of material_type" [value]="x"
+          >{{x.display_name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Select Truck Type</ion-label>
+      <ion-select
+        formControlName="truck_type"
+        placeholder="Select Truck Type"
+        (ionChange)="selectTruck(truck_type)"
+      >
+        <ion-select-option *ngFor="let x of truck_type" [value]="x"
+          >{{x.display_name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Weight In Tons</ion-label>
+      <ion-input required formControlName="weight"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Scheduled Date</ion-label>
+      <ion-input
+        required
+        type="text"
+        formControlName="ScheduledDate"
+        placeholder="Email"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Your Offered Freight (Price)</ion-label>
+      <ion-input
+        required
+        type="text"
+        formControlName="offeredPrice"
+        placeholder="Email"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Special Instructions</ion-label>
+      <ion-input
+        required
+        type="text"
+        formControlName="SpecialInstructions"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="fixed">Scheduled Date</ion-label>
+      <ion-input
+        required
+        type="text"
+        formControlName="ScheduledDate"
+      ></ion-input>
+    </ion-item>
+  </form>
+
+  <div class="instruction_">
+    <p class="p_inst">
+      Note: Before doing any payment to truck owner / Transporter Please call us
+      on our Number : 99880 98200 for verification of user.
+    </p>
+    <p class="p_inst">
+      If you doing any payment without informing us then RED Transports will be
+      not responsible for reliability of truck owner / transporter.
+    </p>
+  </div>
+</ion-content>

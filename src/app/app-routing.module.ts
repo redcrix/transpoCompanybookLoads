@@ -15,7 +15,15 @@ const routes: Routes = [
     path: 'list',
     loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
-  { path: 'location-select', loadChildren: './location-select/location-select.module#LocationSelectPageModule' }
+  { path: 'location-select', loadChildren: './location-select/location-select.module#LocationSelectPageModule' },
+  { path: 'truck-driver-registeration', loadChildren: './truck-driver-registeration/truck-driver-registeration.module#TruckDriverRegisterationPageModule' },
+  { path: 'user-registeration', loadChildren: './user-registeration/user-registeration.module#UserRegisterationPageModule' },
+  { path: 'post-load', loadChildren: './post-load/post-load.module#PostLoadPageModule' },
+  { path: 'find-trucks', loadChildren: './find-trucks/find-trucks.module#FindTrucksPageModule' },
+  { path: 'find-truck-driver', loadChildren: './find-truck-driver/find-truck-driver.module#FindTruckDriverPageModule' },
+  { path: 'find-load', loadChildren: './find-load/find-load.module#FindLoadPageModule' },
+  { path: 'get-estimates', loadChildren: './get-estimates/get-estimates.module#GetEstimatesPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
 ];
 
 @NgModule({

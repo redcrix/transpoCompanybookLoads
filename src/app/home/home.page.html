@@ -1,31 +1,163 @@
-
 <ion-header>
+  <ion-buttons slot="start">
+    <ion-menu-button color="primary"></ion-menu-button>
+  </ion-buttons>
+
   <ion-row>
     <ion-col text-start padding-top>
-      <ion-title>Google Map</ion-title>
+      <div class="list">
+        <p class="p_">
+          Find Truck Driver
+        </p>
+        <p class="p_">
+          Truck Driver Jobs
+        </p>
+        <p class="p_">
+          Login
+        </p>
+        <p class="p_">
+          Register
+        </p>
+      </div>
     </ion-col>
     <ion-col text-end>
-      <ion-button (click)="getMarkers()" shape="round" fill="outline">
-        <ion-icon slot="start" name="locate"></ion-icon>
-        getMarkers
+      <ion-button
+        color="primary"
+        (click)="getMarkers()"
+        shape="round"
+        fill="outline"
+      >
+        <ion-icon color="primary" slot="start" name="locate"></ion-icon>
+        99880 98201
       </ion-button>
     </ion-col>
   </ion-row>
 </ion-header>
 <ion-content>
+  <ion-list>
+    <div class="content_">
+      <ion-row>
+        <ion-col>
+          <div class="input_">
+            <ion-input
+              style="border: 1px solid lightgray;"
+              [(ngModel)]="pick_city"
+              type="text"
+              placeholder="Enter Pickup City"
+            >
+            </ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="input_">
+            <ion-input
+              style="border: 1px solid lightgray;"
+              [(ngModel)]="drop_city"
+              type="text"
+              placeholder="Enter Drop City"
+            >
+            </ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="input_">
+            <ion-input
+              style="border: 1px solid lightgray;"
+              [(ngModel)]="drop_city"
+              type="text"
+              placeholder="Service"
+            >
+            </ion-input>
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="input_">
+            <ion-button
+              class="instant_price_btn"
+              color="primary"
+              style="margin-top: 1px;"
+            >
+              Check Instant Price
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
 
+    <div class="logos_">
+      <ion-row>
+        <ion-col>
+          <div class="img">
+            <img src="../../assets/icon/favicon.png" />
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="img">
+            <img src="../../assets/icon/favicon.png" />
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="img">
+            <img src="../../assets/icon/favicon.png" />
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="img">
+            <img src="../../assets/icon/favicon.png" />
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
 
-<ion-list>
-  <ion-item>
-    <ion-input (click)="showAddressModal()" [(ngModel)]="address.place"type="text" placeholder="Pick an address">              </ion-input>
-  </ion-item>
-</ion-list>
+    <div class="list_">
+      <p class="txt_" style="font-weight: bold;">
+        Transportation & Cargo Service Online
+      </p>
 
-  <div class="map-wrapper">
-   
+      <p class="txt__">
+        The pioneer web and app based online platform for both users and truck
+        owners.
+      </p>
+    </div>
+
+    <div class="how_it">
+      <ion-row>
+        <ion-col>
+          <div class="col__">
+            <p class="p_txt__">
+              Enter your details
+            </p>
+            <p class="p__">
+              Submit the details of pick up, drop and dimensions of the cargo
+            </p>
+          </div>
+
+          <div class="col__">
+            <p class="p_txt__">
+              Get your price & Pay
+            </p>
+            <p class="p__">
+              Find out exactly how much it will cost and payment mode
+            </p>
+          </div>
+
+          <div class="col__">
+            <p class="p_txt__">
+              Stay in Touch
+            </p>
+            <p class="p__">
+              Receive vendor details and updates through email & SMS
+              notifications
+            </p>
+          </div>
+        </ion-col>
+        <ion-col> </ion-col>
+      </ion-row>
+    </div>
+    <ion-item> </ion-item>
+  </ion-list>
+
+  <!-- <div class="map-wrapper">
     <div #map id="map"></div>
-  </div>
-
-
-
+  </div> -->
 </ion-content>
