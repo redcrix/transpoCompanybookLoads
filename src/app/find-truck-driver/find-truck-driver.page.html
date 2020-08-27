@@ -7,54 +7,41 @@
     <ion-title>Find truck drivers</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <section class="card">
-    <div class="history" style="overflow-x: auto;" id="style-1">
-      <table id="myTable">
-        <tr>
-          <th>id</th>
-          <th>Name</th>
-          <th>City</th>
-          <th>Experience</th>
-          <th>Salary</th>
-          <th>Type</th>
-          <th>Age</th>
-          <th>Reg. Date</th>
-          <th>Action</th>
-        </tr>
-        <tr>
-          <td>
-            <p class="detail_">id</p>
-          </td>
-          <td>
-            <p class="detail_">id</p>
-          </td>
-          <td>
-            <p class="detail_">id</p>
-          </td>
-          <td>
-            <p class="detail_">id</p>
-          </td>
-          <td>
-            <p class="detail_">id</p>
-          </td>
-          <td>
-            <p class="detail_">id</p>
-          </td>
-          <td>
-            <p class="detail_">id</p>
-          </td>
-          <td>
-            <p class="detail_">id</p>
-          </td>
-          <td class="ion-activatable ion-focusable hydrated">
-            <div class="edit_">
-              <ion-icon name="refresh-outline" class="save_icon"></ion-icon>
+    <ion-row>
+      <ion-col>
+        <div class="companies" *ngFor="let c of drivers_list">
+          <div class="left_">
+            <div class="profile_pic">
+              <img
+                src="../../assets/icon/favicon.png"
+                class="profile_pic_img"
+              />
             </div>
-          </td>
-        </tr>
-      </table>
-    </div>
+            <div class="username">
+              {{c.username}}
+            </div>
+            <div class="email">
+              {{c.email}}
+            </div>
+          </div>
+
+          <div class="right_">
+            <div class="txts">
+              <div class="truck_type">
+                <p class="TruckTxt">{{c.TruckType}}</p>
+                <img src="../../assets/icon/favicon.png" class="truckImg" />
+              </div>
+
+              <p class="TruckTxt">{{c.TruckNumber}}</p>
+              <p class="TruckTxt">{{c.TruckOwnerMobile}}</p>
+              <p class="TruckTxt">{{c.RouteOperate}}</p>
+              <p class="TruckTxt">{{c.PermitState}}</p>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
   </section>
 </ion-content>

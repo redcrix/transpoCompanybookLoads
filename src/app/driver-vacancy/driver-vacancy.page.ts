@@ -4,23 +4,21 @@ import { ApiService } from "../api.service";
 import { Storage } from "@ionic/storage";
 
 @Component({
-  selector: "app-find-load",
-  templateUrl: "./find-load.page.html",
-  styleUrls: ["./find-load.page.scss"],
+  selector: "app-driver-vacancy",
+  templateUrl: "./driver-vacancy.page.html",
+  styleUrls: ["./driver-vacancy.page.scss"],
 })
-export class FindLoadPage implements OnInit {
-  All_load: any;
+export class DriverVacancyPage implements OnInit {
+  drivers_list: any;
   constructor(
     public api: ApiService,
     private storage: Storage,
     public loadingController: LoadingController
   ) {}
 
-  ngOnInit() {
-    this.get_loads();
-  }
+  ngOnInit() {}
 
-  async get_loads() {
+  async get_all_drivers() {
     let Loading_ = await this.loadingController.create({
       message: "Please wait...",
       translucent: true,
@@ -28,11 +26,11 @@ export class FindLoadPage implements OnInit {
     });
     await Loading_.present();
 
-    await this.api.get_data("get_loads").subscribe(
+    await this.api.get_data("get_all_drivers").subscribe(
       (res) => {
         Loading_.dismiss();
         console.log(res);
-        this.All_load = res["data"];
+        this.drivers_list = res["data"];
       },
       (err) => {
         Loading_.dismiss();

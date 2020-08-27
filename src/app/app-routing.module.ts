@@ -23,7 +23,8 @@ const routes: Routes = [
   { path: 'find-truck-driver', loadChildren: './find-truck-driver/find-truck-driver.module#FindTruckDriverPageModule' },
   { path: 'find-load', loadChildren: './find-load/find-load.module#FindLoadPageModule' },
   { path: 'get-estimates', loadChildren: './get-estimates/get-estimates.module#GetEstimatesPageModule' },
-  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
+  { path: 'driver-vacancy', loadChildren: './driver-vacancy/driver-vacancy.module#DriverVacancyPageModule' }
 ];
 
 @NgModule({

@@ -66,11 +66,6 @@ export class AppComponent {
       icon: "list",
     },
     {
-      title: "Calculate Freight",
-      url: "/list",
-      icon: "list",
-    },
-    {
       title: "Post Driver Vacancy",
       url: "/list",
       icon: "list",

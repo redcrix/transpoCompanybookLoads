@@ -7,6 +7,7 @@ import {
   NativeGeocoderOptions,
 } from "@ionic-native/native-geocoder/ngx";
 import { ModalPage } from "./autoComp";
+import { CommonService } from "../common.function";
 
 declare var google;
 
@@ -24,11 +25,13 @@ export class HomePage {
   @ViewChild("map", { static: false }) mapContainer: ElementRef;
   pick_city: any;
   drop_city: any;
-
+  username: "";
+  isDriver = "";
   constructor(
     private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder,
-    private ModalCtrl: ModalController
+    private ModalCtrl: ModalController,
+    public config: CommonService
   ) {
     this.address = {
       place: "",
@@ -38,7 +41,18 @@ export class HomePage {
   }
 
   ngOnInit() {
-    // this.loadMap();
+    let config = this.config.storageGet("user");
+    this.username = config["__zone_symbol__value"];
+    let isDriver = this.config.storageGet("isDriver");
+    this.isDriver = isDriver["__zone_symbol__value"];
+    if (this.isDriver == "yes") {
+      this.isDriver = "true";
+    } else if (this.isDriver == "no") {
+      this.isDriver = "false";
+    }
+
+    console.log(config);
+    console.log(isDriver);
   }
 
   ionViewDidLoad() {}

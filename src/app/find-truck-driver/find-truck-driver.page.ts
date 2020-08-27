@@ -29,7 +29,7 @@ export class FindTruckDriverPage implements OnInit {
     });
     await Loading_.present();
 
-    await this.api.get_all_drivers("get_all_drivers").subscribe(
+    await this.api.get_data("get_all_drivers").subscribe(
       (res) => {
         Loading_.dismiss();
         console.log(res);

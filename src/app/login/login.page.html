@@ -1,35 +1,114 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <form [formGroup]="form_detail">
-    <div class="login_box">
-      <ion-label position="fixed">Email</ion-label>
-      <ion-input
-        required
-        type="email"
-        formControlName="username"
-        placeholder="Username"
-      ></ion-input>
-    </div>
+  <!-- Top header image. uncomment if not using background image in scss file -->
+  <ion-row>
+    <ion-col>
+      <div class="login-logo">
+        <!-- <img src="" class="fnf_logo"> -->
+        <img
+          src="../../assets/icon/favicon.png"
+          alt="logo"
+          style="height: 150px; width: 150px;"
+        />
+        <!-- <img src="../../../assets/icon/favicon.png" class="logo-fetch"> -->
+      </div>
+    </ion-col>
+  </ion-row>
 
-    <div class="login_box">
-      <ion-label position="fixed">Email</ion-label>
-      <ion-input
-        required
-        type="password"
-        formControlName="password"
-        placeholder="Password"
-      ></ion-input>
-    </div>
-  </form>
+  <!-- Login Form 1 -->
+  <div class="login1">
+    <!-- <p (click)="vendorLo()">vendor login</p> -->
+    <ion-card mode="md">
+      <div class="form">
+        <!--p><ion-text color="medium">-- {{"continue with" | translate}} --</ion-text></p>
+        <ion-grid>
+        <ion-row>
+        <ion-col size="6">
+        <ion-button expand="block" shape="undefined" mode="ios" fill="solid" color="google" (click)="googleLogin()" [disabled]="googleLogingInn">
+        <ion-icon slot="start" name="logo-google"></ion-icon>{{"Google"| translate}}</ion-button>
+        <br/>
+        </ion-col>
+        <ion-col size="6">
+        <ion-button expand="block" shape="undefined" mode="ios" fill="solid" color="facebook" (click)="facebookLogin()" [disabled]="facebookLogingInn">
+        <ion-icon slot="start" name="logo-facebook"></ion-icon>{{"Facebook"| translate}}</ion-button>
+        </ion-col>
+        </ion-row>
+        </ion-grid>
+        <p><ion-text color="medium">-- {{"or use email address" | translate}} --</ion-text></p-->
+        <ion-list>
+          <form [formGroup]="form_detail">
+            <ion-item mode="md">
+              <ion-label color="primary" position="stacked"
+                >Email Address</ion-label
+              >
+              <ion-input
+                type="email"
+                formControlName="username"
+                placeholder="Email/Username"
+              ></ion-input>
+            </ion-item>
 
-  <div class="col_">
-    <ion-button (click)="Login_()" class="login_btn">
-      Login
-    </ion-button>
+            <ion-item mode="md">
+              <ion-label color="primary" position="stacked">Password</ion-label>
+              <ion-input
+                type="password"
+                formControlName="password"
+                placeholder="Password"
+              ></ion-input>
+              <!-- <ion-checkbox style="float: right;"  class="marginTop" id="checkbox" style="border-style: none;" formControlName="passwordCheckbox" (click)="showPassword(input)"></ion-checkbox> -->
+            </ion-item>
+          </form>
+        </ion-list>
+        <ion-button
+          shape="undefined"
+          fill="solid"
+          expand="block"
+          (click)="Login_()"
+          >SIGN IN</ion-button
+        >
+      </div>
+    </ion-card>
+
+    <div
+      class="skip_now_txt"
+      style="
+        text-align: center;
+        justify-items: center;
+        justify-self: center;
+        font-family: sans-serif;
+        font-family: 'LatoRegular';
+      "
+      (click)="goToHome()"
+    >
+      Skip for Now
+    </div>
+    <div class="message">
+      {{message}}
+    </div>
   </div>
 </ion-content>
+
+<div class="box">
+  <div class="horizontal"></div>
+  <div style="text-align: center; justify-items: center;">
+    <ion-row>
+      <ion-col
+        style="text-align: center; justify-content: center;"
+        (click)="register()"
+      >
+        <p class="txt_footer_Acc">
+          Need an Account ?
+        </p>
+      </ion-col>
+
+      <ion-col
+        class="border_design"
+        style="text-align: center;"
+        (click)="forgotton()"
+      >
+        <p class="txt_footer">
+          Forget Password ?
+        </p>
+      </ion-col>
+    </ion-row>
+  </div>
+</div>

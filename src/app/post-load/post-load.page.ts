@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormArray, Validators } from "@angular/forms";
 import { LoadingController } from "@ionic/angular";
+import { ApiService } from "../api.service";
+import { CommonService } from "../common.function";
 
 @Component({
   selector: "app-post-load",
@@ -13,7 +15,9 @@ export class PostLoadPage implements OnInit {
   truck_type: any;
   constructor(
     private fb: FormBuilder,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public api: ApiService,
+    public config: CommonService
   ) {
     this.material_type = [
       {
@@ -221,10 +225,14 @@ export class PostLoadPage implements OnInit {
         truck_select: "Truck Close  (20 ft -NA)",
       },
     ];
+
     this.form_detail = this.fb.group({
-      source_city: ["", Validators.required],
-      dest_city: ["", Validators.required],
+      user_id: [""],
+      created_by: [""],
+      source: ["", Validators.required],
+      destination: ["", Validators.required],
       required_trucks: [""],
+      no_of_trucks: [""],
       truck_type: [""],
       weight: [""],
       offeredPrice: [""],
@@ -234,4 +242,33 @@ export class PostLoadPage implements OnInit {
   }
 
   ngOnInit() {}
+
+  async Post_load() {
+    let Loading_ = await this.loadingController.create({
+      message: "Please wait...",
+      translucent: true,
+      cssClass: "custom-class custom-loading",
+    });
+    await Loading_.present();
+
+    this.form_detail.value.user_id = this.config.storageGet("user_id");
+    this.form_detail.value.created_by = this.config.storageGet("user");
+    //  config["__zone_symbol__value"];
+    await this.api.post_load("post_load", this.form_detail.value).subscribe(
+      (res) => {
+        Loading_.dismiss();
+
+        if (res["success"] == 0) {
+          this.config.alert_(res["message"]);
+        }
+        if (res["success"] == 1) {
+          this.form_detail.value = {};
+          this.config.alert_(res["message"]);
+        }
+      },
+      (err) => {
+        Loading_.dismiss();
+      }
+    );
+  }
 }

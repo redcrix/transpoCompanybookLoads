@@ -94,7 +94,30 @@ export class ApiService {
     );
   }
 
-  get_all_drivers(endPoint) {
+  post_load(endPoint, body) {
+    let send = {
+      user_id: body.user_id,
+      created_by: body.created_by,
+      source: body.source,
+      destination: body.destination,
+      truck_type: body.truck_type,
+      no_of_trucks: body.no_of_trucks,
+      material_type: body.material_type,
+      required_trucks: body.required_trucks,
+      weight: body.weight,
+      ScheduledDate: body.ScheduledDate,
+      offeredPrice: body.offeredPrice,
+      SpecialInstructions: body.SpecialInstructions,
+    };
+
+    let url = this.Apiurl + "api/" + endPoint;
+    return this.http.post(url, send).pipe(
+      tap((_) => {}),
+      catchError(this.handleError(endPoint))
+    );
+  }
+
+  get_data(endPoint) {
     let url = this.Apiurl + "api/" + endPoint;
     return this.http.get(url).pipe(
       tap((_) => {}),

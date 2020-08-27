@@ -26,6 +26,7 @@ export class TruckDriverRegisterationPage implements OnInit {
       password: ["", Validators.required],
       email: ["", Validators.email],
       phone: ["", Validators.required],
+      country: [""],
       companyName: [""],
       OwnerName: [""],
       TruckType: [""],

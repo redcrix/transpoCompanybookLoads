@@ -34,6 +34,17 @@
   </ion-row>
 </ion-header>
 <ion-content>
+  <div class="intro">
+    <p *ngIf="username != ''">
+      Hi {{username}}, Here you can
+      <span *ngIf="!isDriver">
+        find trucks and companies to transit your load.
+      </span>
+      <span *ngIf="isDriver">
+        manage your Trucks, Find more loads, Get Truck Drivers, and much more.
+      </span>
+    </p>
+  </div>
   <ion-list>
     <div class="content_">
       <ion-row>
