@@ -1,11 +1,204 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button color="primary"></ion-menu-button>
+      <ion-back-button color="primary"></ion-back-button>
     </ion-buttons>
-
-    <ion-title>Find Load</ion-title>
+    <ion-title class="ion-text-center">
+      <ion-label class="page-title">Order Detail</ion-label>
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <div class="step_one" *ngIf="ViewOne">
+    <div class="ion-padding" style="padding-bottom: 0px !important">
+      <ion-label class="lbl-txt" style="font-weight: bold"
+        >User Details</ion-label
+      >
+    </div>
+
+    <div class="ion-padding ion-margin custom-box" (click)="viewThis()">
+      <ion-label class="name-txt" style="font-weight: bold">NAME</ion-label>
+      <ion-label class="add-txt" style="display: block"> ADDRESS </ion-label>
+    </div>
+  </div>
+  <div *ngIf="!ViewOne">
+    <!-- disabled="{{imageFile != undefined || requestData.bill != '' ? false : true}}" -->
+
+    <div class="ion-padding" style="padding-bottom: 0px !important">
+      <ion-label class="lbl-txt" style="font-weight: bold"
+        >User Details</ion-label
+      >
+      <ion-label style="float: right; color: #ed576b">Accepted By</ion-label>
+    </div>
+
+    <div class="ion-padding ion-margin custom-box">
+      <ion-label class="name-txt" style="font-weight: bold">NAME</ion-label>
+      <ion-label class="add-txt" style="display: block"> ADDRESS </ion-label>
+    </div>
+
+    <div>
+      <div class="spacertop"></div>
+      <div class="ion-padding" style="padding-bottom: 0px !important">
+        <ion-label style="font-weight: bold" class="lbl-txt"
+          >Items in this order</ion-label
+        >
+      </div>
+
+      <div class="ion-padding ion-margin" style="margin-top: -9px !important">
+        <!-- <ion-grid class="ion-no-padding"> -->
+        <ion-row class="item-layout">
+          <ion-col class="col-one">
+            <ion-row>
+              <ion-col>
+                <ion-label
+                  class="txt-name"
+                  style="font-weight: bold; font-size: small"
+                  >NME</ion-label
+                >
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <ion-col class="col-two">
+            <ion-row>
+              <ion-col>
+                <ion-label class="txt-in-card"> QTY/BRNCH</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+          <!-- <ion-col class="col-one">
+              <ion-item lines="none" color="customWhite">
+                <ion-grid
+                  class="ion-no-padding"
+                  style="padding-left: 0 !important"
+                >
+                  <ion-row>
+                    <ion-col>
+                      <ion-label class="add-txt">{{items.name}}</ion-label>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <ion-label class="add-txt"
+                        >Qty {{items.quantity}}/ 1 {{items.branch}}</ion-label
+                      >
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+            </ion-col> -->
+        </ion-row>
+        <!-- </ion-grid> -->
+      </div>
+
+      <div class="ion-padding" style="padding-bottom: 0px !important">
+        <ion-label class="lbl-txt" style="font-weight: bold">
+          Order Details</ion-label
+        >
+      </div>
+
+      <div
+        class="ion-padding ion-margin custom-box"
+        style="margin-top: 21px !important"
+      >
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <ion-label class="add-txt">Order date:</ion-label>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label class="add-txt" style="font-weight: bold"
+                >DATE</ion-label
+              >
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6">
+              <ion-label class="add-txt">Order no:</ion-label>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label class="add-txt" style="font-weight: bold"
+                >IDD NO</ion-label
+              >
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col sixe="6">
+              <ion-label class="add-txt">Approximate Bill: </ion-label>
+            </ion-col>
+            <ion-col size="6">
+              <ion-label class="add-txt" style="font-weight: bold"
+                >&#x20B9; AMT+DDD</ion-label
+              >
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+
+      <div class="ion-padding" style="padding-bottom: 0px !important">
+        <ion-label class="add-txt" style="font-weight: bold" class="lbl-txt"
+          >Order Accepted Date</ion-label
+        >
+      </div>
+      <div
+        class="ion-padding ion-margin custom-box"
+        style="margin-top: 21px !important"
+      >
+        <ion-label class="add-txt">DATE</ion-label>
+      </div>
+
+      <div class="ion-padding" style="padding-bottom: 0px !important">
+        <ion-label style="font-weight: bold" class="lbl-txt"
+          >Payment Details</ion-label
+        >
+      </div>
+      <div
+        class="ion-padding ion-margin custom-box"
+        style="margin-top: 21px !important"
+      >
+        Payment accepted by:
+        <ion-label class="add-txt"> NN<span></span> </ion-label>
+      </div>
+
+      <ion-grid class="ion-padding">
+        <ion-row>
+          <ion-col style="text-align: center">
+            <img
+              style="height: 300px; width: 300px"
+              src="../../assets/icon/favicon.png"
+            />
+          </ion-col>
+        </ion-row>
+        <ion-row class="bill-amt-container">
+          <ion-col size="4">
+            <p class="final-bill-txt">Final Bill</p>
+          </ion-col>
+          <ion-col size="8">
+            <div class="billAmount">
+              <div class="amt-bill">90</div>
+
+              <p class="conv-txt">+</p>
+
+              <div class="amt-bill">10</div>
+
+              <p class="conv-txt">=</p>
+              <div class="amt-bill">100</div>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="container-bottom">
+          <ion-col size="6" style="text-align: center">
+            <ion-button (click)="goToChat()" class="button-btm chat"
+              >Chat</ion-button
+            >
+          </ion-col>
+          <ion-col size="6" style="text-align: center">
+            <ion-button class="button-btm cancel">Cancel</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

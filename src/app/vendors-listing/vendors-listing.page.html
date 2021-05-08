@@ -1,0 +1,816 @@
+<ion-header>
+  <ion-toolbar no-border>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-box">
+    <div class="innerc" *ngIf="updateOrderNew">
+      <div class="slide-box" *ngFor="let n of orders_info">
+        <ion-row>
+          <ion-col size="12" size-sm="6" size-md="4">
+            <div class="content-one">
+              <p class="subtitle-content">Order No.</p>
+              <p class="text-info">{{n.orderNo}}</p>
+              <p class="text-info btn" *ngIf="!n.orderNo">not filled</p>
+
+              <p class="subtitle-content">Order type</p>
+              <p class="text-info">{{n.type}}</p>
+              <p class="subtitle-content">Address</p>
+              <p class="text-info">
+                <img
+                  src="../../assets/icon/Iconawesome-address-book.png"
+                  class="png-icn"
+                />
+                {{n.street}}, {{n.landmark}}, {{n.town}}, {{n.country}},
+                {{n.pincode}}
+              </p>
+
+              <p class="subtitle-content">Customer Contact no</p>
+              <p class="text-info">{{n.customerContactNo}}</p>
+              <p *ngIf="!n.customerContactNo" class="text-info">not filled</p>
+
+              <p class="subtitle-content">Market Price</p>
+              <p class="text-info" *ngIf="n.MarketPrice">
+                <img
+                  src="../../assets/icon/Iconawesome-caret-up.png"
+                  class="png-icn"
+                />
+                {{n.MarketPrice}}
+              </p>
+
+              <p class="text-info" *ngIf="!n.MarketPrice">
+                <img
+                  src="../../assets/icon/Iconawesome-caret-up.png"
+                  class="png-icn"
+                />
+                Not updated
+              </p>
+
+              <p class="subtitle-content">Status</p>
+
+              <p class="text-info">
+                <img
+                  *ngIf="n.status == 'Rejected'"
+                  src="../../assets/icon/red-dot.png"
+                  class="png-icn Rejected"
+                />
+                <img
+                  *ngIf="n.status != 'Rejected'"
+                  src="../../assets/icon/status-ic.png"
+                  class="png-icn"
+                />
+                <span class="text-info" *ngIf="!n.status">not filled</span>
+                {{n.status}}
+              </p>
+
+              <p class="subtitle-content">Order Date</p>
+              <p *ngIf="n.createdAt" class="text-info">
+                <img
+                  src="../../assets/icon/Iconmaterial-date-range.png"
+                  class="png-icn"
+                />{{n.createdAt | slice:0:10}}
+              </p>
+              <p *ngIf="!n.createdAt" class="text-info">
+                <img
+                  src="../../assets/icon/Iconmaterial-date-range.png"
+                  class="png-icn"
+                />not filled
+              </p>
+            </div>
+          </ion-col>
+          <ion-col size="12" size-sm="6" size-md="4">
+            <div class="content-two">
+              <p class="subtitle-content">Google map view</p>
+              <p class="text-info">
+                <img
+                  src="../../assets/icon/Iconmaterial-location-on.png"
+                  class="png-icn"
+                />
+                {{n.lati}}, {{n.longi}}
+              </p>
+
+              <p class="text-info" *ngIf="!n.street">
+                <img
+                  src="../../assets/icon/Iconawesome-caret-up.png"
+                  class="png-icn"
+                />
+                Not updated
+              </p>
+
+              <p class="subtitle-content">Service Due on</p>
+
+              <p class="text-info" *ngIf="!n.dueDate">
+                <img
+                  src="../../assets/icon/Iconmaterial-date-range.png"
+                  class="png-icn"
+                />
+                not filled
+              </p>
+
+              <p class="text-info" *ngIf="n.dueDate">
+                <img
+                  src="../../assets/icon/Iconmaterial-date-range.png"
+                  class="png-icn"
+                />
+                {{n.dueDate}}
+              </p>
+              <p class="subtitle-content">Expiry Date</p>
+              <p class="text-info btn" *ngIf="!n.dueDate">not filled</p>
+
+              <p *ngIf="n.dueDate" class="text-info btn">{{n.dueDate}}</p>
+              <p class="subtitle-content">Rate us</p>
+              <p class="text-info">
+                <img src="../../../assets/icon/Group527.png" class="rate-icn" />
+              </p>
+
+              <p class="subtitle-content">Venture</p>
+              <p class="text-info btn" *ngIf="!n.venture">not filled</p>
+
+              <p *ngIf="n.venture" class="text-info btn">{{n.venture}}</p>
+            </div>
+          </ion-col>
+          <ion-col size="12" size-sm="6" size-md="4">
+            <div class="content-three">
+              <ion-row>
+                <ion-col>
+                  <p class="title-btn">
+                    <button (click)="editOrdr(n)" class="edit-btn">Edit</button>
+                  </p>
+                </ion-col>
+              </ion-row>
+
+              <div class="btns-appv final">
+                <p class="btntxt" (click)="viewPhotosViews(n)">
+                  <ion-icon class="pic-gall" name="images-outline"></ion-icon>
+
+                  View Photos/Videos
+                </p>
+
+                <p class="btntxt" (click)="Click_Copy_Request_Service(n, 1)">
+                  <img
+                    src="../../assets/icon/Iconfeather-copy.png"
+                    class="appv-img Final"
+                  />
+                  Copy Order
+                </p>
+                <p class="btntxt" (click)="Click_Copy_Request_Service(n, 2)">
+                  <img
+                    src="../../assets/icon/Iconmaterial-rate-review.png"
+                    class="appv-img Final"
+                  />
+                  Renew Order
+                </p>
+                <p class="btntxt" (click)="Click_Copy_Request_Service(n, 3)">
+                  <img
+                    src="../../assets/icon/Iconionic-ios-calendar.png"
+                    class="appv-img Final"
+                  />
+                  Move to annual
+                </p>
+                <p class="btntxt" (click)="viewReports(n)">
+                  <img
+                    src="../../assets/icon/Iconionic-ios-calendar.png"
+                    class="appv-img Final"
+                  />
+                  View Report
+                </p>
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+
+    <div class="innerc" *ngIf="!updateOrderNew">
+      <div class="container_form">
+        <form [formGroup]="order_create_form">
+          <!-- <div class="txt_col"> -->
+          <ion-row>
+            <ion-col>
+              <div class="box_">
+                <div
+                  class="subscription-Box"
+                  [style.background-color]="getBackgroundColor()"
+                >
+                  <p class="text_amt" [style.color]="getColor()">Rs 1000/-</p>
+                </div>
+
+                <div
+                  class="subscription-Box bottom"
+                  [style.background-color]="getBackgroundColor()"
+                >
+                  <p class="text_amt_detail" [style.color]="getColor()">
+                    <ion-checkbox
+                      disabled
+                      value="subscription_one"
+                      (ionChange)="changeEvt()"
+                      color="secondary"
+                      style="
+                        font-size: 10px;
+                        height: 17px;
+                        width: 17px;
+                        margin-right: 2px;
+                      "
+                      formControlName="subscription_one"
+                    ></ion-checkbox>
+                    One Time Subscription
+                  </p>
+                </div>
+              </div>
+            </ion-col>
+
+            <ion-col>
+              <div class="box_">
+                <div
+                  class="subscription-Box Secondry"
+                  [style.background-color]="getBackgroundColor_t()"
+                >
+                  <p class="text_amt amt Secondry" [style.color]="getColor_t()">
+                    Rs 3000/-
+                  </p>
+                </div>
+
+                <div
+                  class="subscription-Box bottom Secondry"
+                  [style.background-color]="getBackgroundColor_t()"
+                >
+                  <p
+                    class="text_amt_detail annual Secondry"
+                    [style.color]="getColor_t()"
+                  >
+                    <ion-checkbox
+                      disabled
+                      value="subscription_two"
+                      (ionChange)="changeEvt2()"
+                      color="secondary"
+                      style="
+                        font-size: 10px;
+                        height: 17px;
+                        width: 17px;
+                        margin-right: 2px;
+                      "
+                      formControlName="subscription_two"
+                    ></ion-checkbox>
+                    Annual Subscription
+                  </p>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+          <!-- <div class="inputs"> -->
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating">Order Id </ion-label>
+                <ion-input
+                  disabled
+                  style="
+                    background: none;
+                    border: none;
+
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Order Id"
+                  formControlName="orderNo"
+                >
+                </ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating"
+                  >Status
+                  <span *ngIf="formInputIsRequired('status')" class="required"
+                    >&#42;</span
+                  >
+                </ion-label>
+                <ion-input
+                  disabled
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="status"
+                  formControlName="status"
+                >
+                </ion-input>
+              </ion-item>
+
+              <div
+                class="error"
+                *ngIf="order_create_form.get('status').hasError('required') && order_create_form.get('status').touched"
+              >
+                status is required
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating"
+                  >City
+                  <span *ngIf="formInputIsRequired('city')" class="required"
+                    >&#42;</span
+                  >
+                </ion-label>
+
+                <ion-input
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="City"
+                  formControlName="city"
+                >
+                </ion-input>
+              </ion-item>
+
+              <div
+                class="error"
+                *ngIf="order_create_form.get('city').hasError('required') && order_create_form.get('city').touched"
+              >
+                City is required
+              </div>
+            </ion-col>
+
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating"
+                  >Area
+                  <span *ngIf="formInputIsRequired('area')" class="required"
+                    >&#42;</span
+                  >
+                </ion-label>
+                <ion-input
+                  style="
+                    background: none;
+                    border: none;
+
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Area"
+                  formControlName="area"
+                >
+                </ion-input>
+              </ion-item>
+              <div
+                class="error"
+                *ngIf="order_create_form.get('area').hasError('required') && order_create_form.get('area').touched"
+              >
+                Area is required
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating">Pincode</ion-label>
+                <ion-input
+                  type="number"
+                  style="
+                    background: none;
+                    border: none;
+
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Pincode"
+                  formControlName="pincode"
+                >
+                </ion-input>
+                <span *ngIf="formInputIsRequired('pincode')" class="required"
+                  >&#42;</span
+                >
+              </ion-item>
+            </ion-col>
+
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating">Country</ion-label>
+                <ion-input
+                  style="
+                    background: none;
+                    border: none;
+
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Country"
+                  formControlName="country"
+                >
+                </ion-input>
+                <span *ngIf="formInputIsRequired('country')" class="required"
+                  >&#42;</span
+                >
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating"
+                  >Mobile No
+                  <span
+                    *ngIf="formInputIsRequired('contact_no')"
+                    class="required"
+                    >&#42;</span
+                  >
+                </ion-label>
+                <ion-input
+                  type="number"
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Mobile No"
+                  formControlName="contact_no"
+                >
+                </ion-input>
+              </ion-item>
+              <div
+                class="error"
+                *ngIf="order_create_form.get('contact_no').hasError('required') && order_create_form.get('contact_no').touched"
+              >
+                Contact number is required
+              </div>
+              <div
+                class="error"
+                *ngIf="order_create_form.get('contact_no').hasError('minlength') && order_create_form.get('contact_no').touched"
+              >
+                Enter correct phone number
+              </div>
+            </ion-col>
+
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating"
+                  >Contact Timing
+                  <span
+                    *ngIf="formInputIsRequired('contact_timing')"
+                    class="required"
+                    >&#42;</span
+                  >
+                </ion-label>
+                <ion-datetime
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Contact Timing"
+                  formControlName="contact_timing"
+                  displayFormat="MMM DD, YYYY HH:mm"
+                ></ion-datetime>
+              </ion-item>
+              <div
+                class="error"
+                *ngIf="order_create_form.get('contact_timing').hasError('required') && order_create_form.get('contact_timing').touched"
+              >
+                Contact timing is required
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating"
+                  >Pet name
+                  <span *ngIf="formInputIsRequired('pet_name')" class="required"
+                    >&#42;</span
+                  >
+                </ion-label>
+                <ion-input
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Pet name"
+                  formControlName="pet_name"
+                >
+                </ion-input>
+              </ion-item>
+              <div
+                class="error"
+                *ngIf="order_create_form.get('pet_name').hasError('required') && order_create_form.get('pet_name').touched"
+              >
+                Pet name is required
+              </div>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating"
+                  >Plot No
+                  <span *ngIf="formInputIsRequired('plot_no')" class="required"
+                    >&#42;</span
+                  >
+                </ion-label>
+                <ion-input
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Plot No"
+                  formControlName="plot_no"
+                >
+                </ion-input>
+              </ion-item>
+              <div
+                class="error"
+                *ngIf="order_create_form.get('plot_no').hasError('required') && order_create_form.get('plot_no').touched"
+              >
+                Plot No. is required
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating"
+                  >Street
+                  <span *ngIf="formInputIsRequired('street')" class="required"
+                    >&#42;</span
+                  >
+                </ion-label>
+                <ion-input
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Street"
+                  formControlName="street"
+                >
+                </ion-input>
+              </ion-item>
+              <div
+                class="error"
+                *ngIf="order_create_form.get('street').hasError('required') && order_create_form.get('street').touched"
+              >
+                Street is required
+              </div>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating">Venture name</ion-label>
+                <ion-input
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Venture name"
+                  formControlName="venture_name"
+                >
+                </ion-input>
+                <span
+                  *ngIf="formInputIsRequired('venture_name')"
+                  class="required"
+                  >&#42;</span
+                >
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating"
+                  >Landmark
+                  <span *ngIf="formInputIsRequired('landmark')" class="required"
+                    >&#42;</span
+                  >
+                </ion-label>
+                <ion-input
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Landmark"
+                  formControlName="landmark"
+                >
+                </ion-input>
+              </ion-item>
+              <div
+                class="error"
+                *ngIf="order_create_form.get('landmark').hasError('required') && order_create_form.get('landmark').touched"
+              >
+                Landmark is required
+              </div>
+            </ion-col>
+            <ion-col>
+              <div class="wid-half">
+                <ion-item>
+                  <ion-label position="floating">What's app No</ion-label>
+                  <ion-input
+                    type="number"
+                    style="
+                      background: none;
+                      border: none;
+                      color: var(--ion-color-primary) !important;
+                      font-family: Poppins;
+                    "
+                    class="input_"
+                    placeholder="What's app No"
+                    formControlName="whatsapp_no"
+                  >
+                  </ion-input>
+                  <span
+                    *ngIf="formInputIsRequired('whatsapp_no')"
+                    class="required"
+                    >&#42;</span
+                  >
+                </ion-item>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating"
+                  >Email
+                  <span *ngIf="formInputIsRequired('email_id')" class="required"
+                    >&#42;</span
+                  >
+                </ion-label>
+                <ion-input
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Email id"
+                  formControlName="email_id"
+                >
+                </ion-input>
+              </ion-item>
+              <div
+                class="error"
+                *ngIf="order_create_form.get('email_id').hasError('required') && order_create_form.get('email_id').touched"
+              >
+                Email is required
+              </div>
+              <div
+                class="error"
+                *ngIf="order_create_form.get('email_id').hasError('email') && order_create_form.get('email_id').touched"
+              >
+                Please enter valid email
+              </div>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label position="floating">Special Instruction</ion-label>
+                <ion-input
+                  style="
+                    background: none;
+                    border: none;
+                    color: var(--ion-color-primary) !important;
+                    font-family: Poppins;
+                  "
+                  class="input_"
+                  placeholder="Special Instruction"
+                  formControlName="special_inst"
+                >
+                </ion-input>
+                <span
+                  *ngIf="formInputIsRequired('special_inst')"
+                  class="required"
+                  >&#42;</span
+                >
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <div class="wid-half">
+                <ion-item>
+                  <ion-label position="floating">Created at</ion-label>
+
+                  <ion-datetime
+                    disabled
+                    style="
+                      background: none;
+                      border: none;
+                      color: var(--ion-color-primary) !important;
+                      font-family: Poppins;
+                    "
+                    class="input_"
+                    placeholder="created At"
+                    formControlName="createdAt"
+                    displayFormat="MMM DD, YYYY HH:mm"
+                  ></ion-datetime>
+
+                  <span
+                    *ngIf="formInputIsRequired('createdAt')"
+                    class="required"
+                    >&#42;</span
+                  >
+                </ion-item>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <div class="img-cgallery" *ngFor="let c of filesData">
+                <img
+                  src="https://myplotpic.com:8443/uploads/{{c}}"
+                  class="slide-img"
+                />
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <div class="ins-box">
+                <p class="txt-ins">
+                  <ion-checkbox
+                    color="secondary"
+                    style="
+                      font-size: 10px;
+                      height: 17px;
+                      width: 17px;
+                      margin-right: 6px;
+                    "
+                    formControlName="send_images_verify"
+                  ></ion-checkbox>
+
+                  Send Images & Videos on my What's app
+                </p>
+                <p class="txt-ins">
+                  <ion-checkbox
+                    color="secondary"
+                    style="
+                      font-size: 10px;
+                      height: 17px;
+                      width: 17px;
+                      margin-right: 6px;
+                    "
+                    formControlName="accept_terms"
+                  ></ion-checkbox>
+                  I agree with Terms & Conditions.
+                </p>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col style="text-align: center">
+              <ion-button
+                [disabled]="!order_create_form.valid"
+                class="proc-btn"
+                style="--border-radius: 60px; --background: #d4943f"
+                (click)="Click_Next_Two()"
+                >Update</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</ion-content>

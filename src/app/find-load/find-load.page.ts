@@ -10,6 +10,7 @@ import { Storage } from "@ionic/storage";
 })
 export class FindLoadPage implements OnInit {
   All_load: any;
+  ViewOne = true;
   constructor(
     public api: ApiService,
     private storage: Storage,
@@ -38,5 +39,9 @@ export class FindLoadPage implements OnInit {
         Loading_.dismiss();
       }
     );
+  }
+
+  viewThis() {
+    this.ViewOne = false;
   }
 }

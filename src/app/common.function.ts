@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AlertController, NavController } from "@ionic/angular";
 import { Storage } from "@ionic/storage";
-
+import { ToastController } from "@ionic/angular";
 @Injectable({
   providedIn: "root",
 })
@@ -11,7 +11,8 @@ export class CommonService {
   constructor(
     public alertController: AlertController,
     public navCtrl: NavController,
-    private storage: Storage
+    private storage: Storage,
+    public toastController: ToastController
   ) {}
 
   async alert_(m) {
@@ -57,5 +58,18 @@ export class CommonService {
 
   async navigate(page) {
     this.navCtrl.navigateForward(page);
+  }
+
+  async presentToast(m) {
+    const toast = await this.toastController.create({
+      message: m,
+      duration: 2000,
+    });
+    toast.present();
+  }
+
+  async storageRemoveItem(key) {
+    localStorage.removeItem(key);
+    this.storage.remove(key);
   }
 }

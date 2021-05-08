@@ -1,47 +1,33 @@
 <ion-header>
-  <ion-buttons slot="start">
-    <ion-menu-button color="primary"></ion-menu-button>
-  </ion-buttons>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="primary"></ion-menu-button>
+    </ion-buttons>
 
-  <ion-row>
-    <ion-col text-start padding-top>
-      <div class="list">
-        <p class="p_">
-          Find Truck Driver
-        </p>
-        <p class="p_">
-          Truck Driver Jobs
-        </p>
-        <p class="p_">
-          Login
-        </p>
-        <p class="p_">
-          Register
-        </p>
-      </div>
-    </ion-col>
-    <ion-col text-end>
+    <p class="title-main">RedWave Cargos</p>
+    <ion-buttons slot="end">
       <ion-button
         color="primary"
         (click)="getMarkers()"
         shape="round"
         fill="outline"
       >
-        <ion-icon color="primary" slot="start" name="locate"></ion-icon>
-        99880 98201
+        <ion-icon color="primary" name="locate"></ion-icon>
+        99999 99999
       </ion-button>
-    </ion-col>
-  </ion-row>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="intro">
     <p *ngIf="username != ''">
       Hi {{username}}, Here you can
       <span *ngIf="!isDriver">
-        find trucks and companies to transit your load.
+        find cargo and logistic companies to transit your load.
       </span>
       <span *ngIf="isDriver">
-        manage your Trucks, Find more loads, Get Truck Drivers, and much more.
+        manage your Listing, Find more loads, Get More Vendores Info, and much
+        more.
       </span>
     </p>
   </div>
@@ -50,52 +36,87 @@
       <ion-row>
         <ion-col>
           <div class="input_">
+            <p class="label-p-in">Transportation By</p>
+
+            <ion-row>
+              <ion-col>
+                <div class="smal-box-sel Land">
+                  <ion-checkbox class="sm-md-chk"> </ion-checkbox>
+                  LAND
+                </div>
+              </ion-col>
+              <ion-col>
+                <div class="smal-box-sel Air">
+                  <ion-checkbox class="sm-md-chk"> </ion-checkbox>
+                  AIR
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+
+        <ion-col>
+          <div class="input_">
+            <p class="label-p-in">Origin</p>
             <ion-input
-              style="border: 1px solid lightgray;"
+              style="border: 1px solid lightgray"
               [(ngModel)]="pick_city"
               type="text"
-              placeholder="Enter Pickup City"
+              placeholder="Enter Location"
             >
             </ion-input>
           </div>
         </ion-col>
         <ion-col>
           <div class="input_">
+            <p class="label-p-in">Destination</p>
             <ion-input
-              style="border: 1px solid lightgray;"
+              style="border: 1px solid lightgray"
               [(ngModel)]="drop_city"
               type="text"
-              placeholder="Enter Drop City"
+              placeholder="Enter Location"
             >
             </ion-input>
           </div>
         </ion-col>
+
         <ion-col>
           <div class="input_">
+            <p class="label-p-in">Ready to Load</p>
             <ion-input
-              style="border: 1px solid lightgray;"
+              style="border: 1px solid lightgray"
               [(ngModel)]="drop_city"
               type="text"
-              placeholder="Service"
+              placeholder="Select Date"
             >
             </ion-input>
           </div>
         </ion-col>
+
         <ion-col>
-          <div class="input_">
-            <ion-button
-              class="instant_price_btn"
-              color="primary"
-              style="margin-top: 1px;"
-            >
-              Check Instant Price
-            </ion-button>
+          <div class="input_" style="text-align: center">
+            <button class="sr-icn-ready" (click)="ShowView_Click()">
+              Find
+            </button>
           </div>
         </ion-col>
       </ion-row>
     </div>
 
-    <div class="logos_">
+    <div class="searchcontainer" *ngIf="ShowView">
+      <ion-row *ngIf="Search_NotAvl">
+        <ion-col class="txt-cn-row" style="text-align: center">
+          <img src="../../assets/icon/favicon.png" class="icn-md-searchbr" />
+          <p class="txt-p2">No Puposals Found</p>
+
+          <button class="request-form" (click)="post_requirements()">
+            Post Requirements
+          </button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <div class="logos_" *ngIf="!ShowView">
       <ion-row>
         <ion-col>
           <div class="img">
@@ -120,8 +141,8 @@
       </ion-row>
     </div>
 
-    <div class="list_">
-      <p class="txt_" style="font-weight: bold;">
+    <div class="list_" *ngIf="!ShowView">
+      <p class="txt_" style="font-weight: bold">
         Transportation & Cargo Service Online
       </p>
 
@@ -131,31 +152,25 @@
       </p>
     </div>
 
-    <div class="how_it">
+    <div class="how_it" *ngIf="!ShowView">
       <ion-row>
         <ion-col>
           <div class="col__">
-            <p class="p_txt__">
-              Enter your details
-            </p>
+            <p class="p_txt__">Enter your details</p>
             <p class="p__">
               Submit the details of pick up, drop and dimensions of the cargo
             </p>
           </div>
 
           <div class="col__">
-            <p class="p_txt__">
-              Get your price & Pay
-            </p>
+            <p class="p_txt__">Get your price & Pay</p>
             <p class="p__">
               Find out exactly how much it will cost and payment mode
             </p>
           </div>
 
           <div class="col__">
-            <p class="p_txt__">
-              Stay in Touch
-            </p>
+            <p class="p_txt__">Stay in Touch</p>
             <p class="p__">
               Receive vendor details and updates through email & SMS
               notifications
@@ -165,7 +180,6 @@
         <ion-col> </ion-col>
       </ion-row>
     </div>
-    <ion-item> </ion-item>
   </ion-list>
 
   <!-- <div class="map-wrapper">

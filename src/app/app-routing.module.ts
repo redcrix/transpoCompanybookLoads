@@ -24,7 +24,9 @@ const routes: Routes = [
   { path: 'find-load', loadChildren: './find-load/find-load.module#FindLoadPageModule' },
   { path: 'get-estimates', loadChildren: './get-estimates/get-estimates.module#GetEstimatesPageModule' },
   { path: 'login', loadChildren: './login/login.module#LoginPageModule' },
-  { path: 'driver-vacancy', loadChildren: './driver-vacancy/driver-vacancy.module#DriverVacancyPageModule' }
+  { path: 'driver-vacancy', loadChildren: './driver-vacancy/driver-vacancy.module#DriverVacancyPageModule' },
+  { path: 'vendors-listing', loadChildren: './vendors-listing/vendors-listing.module#VendorsListingPageModule' },
+  { path: 'vendor-registeration', loadChildren: './vendor-registeration/vendor-registeration.module#VendorRegisterationPageModule' }
 ];
 
 @NgModule({

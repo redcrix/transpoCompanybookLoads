@@ -27,6 +27,9 @@ export class HomePage {
   drop_city: any;
   username: "";
   isDriver = "";
+  Search_NotAvl = false;
+  showSearchData = false;
+  ShowView = false;
   constructor(
     private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder,
@@ -149,5 +152,14 @@ export class HomePage {
       component: ModalPage,
     });
     return await modal.present();
+  }
+
+  ShowView_Click() {
+    this.ShowView = true;
+    this.Search_NotAvl = true;
+  }
+
+  post_requirements() {
+    this.config.navigate("post-load");
   }
 }

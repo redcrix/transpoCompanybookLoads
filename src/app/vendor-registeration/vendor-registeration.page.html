@@ -1,0 +1,515 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="page-title">
+      <ion-label class="page-title"> Registration </ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div class="container-outer"> -->
+
+  <!-- ========== -->
+
+  <div class="main-container">
+    <ion-row>
+      <ion-col>
+        <div class="custom-highlighted-bar">
+          <ion-row>
+            <ion-col>
+              <div class="cl-one">
+                <p *ngIf="Step_one_form" class="txt-highlighted">01</p>
+                <p *ngIf="Step_two_form" class="txt-highlighted">02</p>
+                <p *ngIf="Step_three_form" class="txt-highlighted">03</p>
+                <div
+                  (click)="navStepOne()"
+                  *ngIf="!Step_one_form"
+                  class="bar-css"
+                ></div>
+                <div
+                  (click)="navStepOne()"
+                  *ngIf="Step_one_form"
+                  class="bar-css highlighted"
+                ></div>
+              </div>
+            </ion-col>
+
+            <ion-col>
+              <div class="cl-one">
+                <div
+                  (click)="navStepTwo()"
+                  *ngIf="!Step_two_form"
+                  class="bar-css"
+                ></div>
+                <div
+                  (click)="navStepTwo()"
+                  *ngIf="Step_two_form"
+                  class="bar-css highlighted"
+                ></div>
+              </div>
+            </ion-col>
+
+            <ion-col>
+              <div class="cl-one">
+                <div
+                  (click)="navStepThree()"
+                  *ngIf="!Step_three_form"
+                  class="bar-css"
+                ></div>
+                <div
+                  (click)="navStepThree()"
+                  *ngIf="Step_three_form"
+                  class="bar-css highlighted"
+                ></div>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <!-- ====== STEP 1 -->
+
+        <form
+          *ngIf="Step_one_form"
+          [formGroup]="userGroup"
+          (ngSubmit)="click_next_one()"
+          novalidate
+        >
+          <ion-row>
+            <ion-col style="text-align: center">
+              <p class="txt-title-stepper">Personal Details</p>
+            </ion-col>
+          </ion-row>
+
+          <div class="step_one">
+            <ion-row>
+              <ion-col>
+                <div class="inputs">
+                  <!-- <ion-label class="inputLabel" position="stacked">NAME</ion-label> -->
+                  <ion-input
+                    type="text"
+                    formControlName="nameValue"
+                    placeholder="What's your name?"
+                    required
+                  ></ion-input>
+                </div>
+
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.nameValue.errors?.minlength"
+                >
+                  Name should be min 3 chars.
+                </span>
+
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.nameValue.errors?.required"
+                >
+                  Name is required.
+                </span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <div class="inputs">
+                  <!-- <ion-label class="inputLabel" position="stacked">MOBILE NUMBER</ion-label> -->
+                  <ion-input
+                    maxlength="10"
+                    minlength="9"
+                    type="tel"
+                    formControlName="phoneValue"
+                    placeholder="Mobile No."
+                    required
+                  ></ion-input>
+                </div>
+
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.phoneValue.errors?.pattern"
+                >
+                  Enter correct Phone Number.
+                </span>
+
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.phoneValue.errors?.required"
+                >
+                  Phone number is required.
+                </span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <div class="inputs">
+                  <!-- <ion-label class="inputLabel" position="stacked">EMAIL ID</ion-label> -->
+                  <ion-input
+                    email="true"
+                    type="email"
+                    formControlName="emailValue"
+                    placeholder="Email ID"
+                    required
+                  ></ion-input>
+                </div>
+
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.emailValue.errors?.pattern"
+                >
+                  Please provide valid email id.
+                </span>
+
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.emailValue.errors?.required"
+                >
+                  Email id is required.
+                </span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <div class="inputs">
+                  <!-- <ion-label class="inputLabel" position="stacked"
+                    >DATE OF BIRTH</ion-label
+                  > -->
+
+                  <ion-item>
+                    <ion-datetime
+                      placeholder="dd/mm/yyyy"
+                      type="date"
+                      formControlName="dobValue"
+                    ></ion-datetime>
+                  </ion-item>
+                </div>
+
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.dobValue.errors?.required"
+                >
+                  Date of birth is required.
+                </span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col style="text-align: center">
+                <ion-button type="submit" class="stepper-btn">
+                  Next
+                </ion-button>
+              </ion-col>
+            </ion-row>
+
+            <div class="breaker-btm" style="height: 20px"></div>
+          </div>
+        </form>
+
+        <!-- STEP 2 === -->
+
+        <form
+          *ngIf="Step_two_form"
+          [formGroup]="userGroup"
+          (ngSubmit)="click_next_two()"
+          novalidate
+        >
+          <ion-row>
+            <ion-col style="text-align: center">
+              <p class="txt-title-stepper">Address</p>
+            </ion-col>
+          </ion-row>
+
+          <div class="step_one">
+            <ion-row style="text-align: center">
+              <ion-col>
+                <button
+                  class="update-location-btn-cntre-ui"
+                  (click)="updateLocation()"
+                >
+                  <ion-icon name="locate"></ion-icon>
+                  Use my current location
+                </button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <div class="inputs">
+                  <!-- <ion-label class="inputLabel" position="stacked">ADDRESS</ion-label> -->
+                  <ion-input
+                    type="text"
+                    formControlName="addressValue"
+                    placeholder="address"
+                    required
+                  ></ion-input>
+                </div>
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.addressValue.errors?.required"
+                >
+                  Address is required.
+                </span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="6">
+                <div class="inputs">
+                  <!-- <ion-label class="inputLabel" position="stacked"
+                >COUNTRY</ion-label
+              > -->
+                  <ion-input
+                    placeholder="Country"
+                    type="text"
+                    formControlName="countryValue"
+                    required
+                  ></ion-input>
+                </div>
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.countryValue.errors?.required"
+                >
+                  Country is required.
+                </span>
+              </ion-col>
+              <ion-col size="6">
+                <div class="inputs">
+                  <!-- <ion-label class="inputLabel" position="stacked">STATE</ion-label> -->
+                  <ion-input
+                    placeholder="State"
+                    type="text"
+                    formControlName="stateValue"
+                    required
+                  ></ion-input>
+                </div>
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.stateValue.errors?.required"
+                >
+                  State is required.
+                </span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="6">
+                <div class="inputs">
+                  <!-- <ion-label class="inputLabel" position="stacked">CITY</ion-label> -->
+                  <ion-input
+                    placeholder="City"
+                    type="text"
+                    formControlName="cityValue"
+                    required
+                  ></ion-input>
+                </div>
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.cityValue.errors?.required"
+                >
+                  City is required.
+                </span>
+              </ion-col>
+              <ion-col size="6">
+                <div class="inputs">
+                  <!-- <ion-label class="inputLabel" position="stacked"
+                >PINCODE</ion-label
+              > -->
+                  <ion-input
+                    placeholder="Pincode"
+                    type="text"
+                    formControlName="pinValue"
+                    required
+                  ></ion-input>
+                </div>
+
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.pinValue.errors?.minlength"
+                >
+                  Pin should be min 6.
+                </span>
+
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.pinValue.errors?.required"
+                >
+                  Pincode is required.
+                </span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <div class="inputs">
+                  <!-- <ion-label class="inputLabel" position="stacked"
+                >LOCALITY/AREA/LANDMARK</ion-label
+              > -->
+                  <ion-input
+                    placeholder="Locality/Area/Landmark"
+                    type="text"
+                    formControlName="areaValue"
+                    required
+                  ></ion-input>
+                </div>
+                <span
+                  class="errorMessage"
+                  *ngIf="isSubmitted && errorControl.areaValue.errors?.required"
+                >
+                  Area is required.
+                </span>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col style="text-align: center">
+                <ion-button type="submit" class="stepper-btn">
+                  Next
+                </ion-button>
+              </ion-col>
+            </ion-row>
+
+            <div class="breaker-btm" style="height: 20px"></div>
+          </div>
+        </form>
+
+        <!-- STEP 3 === -->
+
+        <form
+          *ngIf="Step_three_form"
+          [formGroup]="userGroup"
+          (ngSubmit)="submitRegistrationDetails()"
+          novalidate
+        >
+          <ion-row>
+            <ion-col style="text-align: center">
+              <p class="txt-title-stepper">
+                Select Your Logistic Countries/States
+              </p>
+            </ion-col>
+          </ion-row>
+
+          <div class="payment-mode-container">
+            <ion-grid>
+              <ion-row>
+                <ion-col
+                  style="text-align: center"
+                  class="payment-mode-out"
+                  size="4"
+                  *ngFor="let mode of paymentModes"
+                >
+                  <div class="payment-mode-in" lines="none">
+                    <div class="container-payment-btn">
+                      <ion-checkbox
+                        class="cus-checkbox"
+                        [formControlName]="mode.formValue"
+                        color="primary"
+                        mode="md"
+                      ></ion-checkbox>
+                      <ion-label
+                        class="mode-txt"
+                        style="font-size: small; white-space: initial"
+                        >{{mode.name}}</ion-label
+                      >
+                    </div>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+
+          <ion-row>
+            <ion-col style="text-align: center">
+              <span
+                class="errorMessage optionstxt"
+                *ngIf="isSubmitted && errorControl.mode.formValue.errors?.required"
+              >
+                Please select atleast one option.
+              </span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6" style="text-align: center">
+              <div style="margin-top: 18px">
+                <ion-label class="txt-percent-earned">
+                  <!-- {{'registrationPage.setPercentEarned'| translate}} -->
+                </ion-label>
+              </div>
+            </ion-col>
+            <ion-col size="4" style="text-align: center">
+              <div class="discount" lines="none">
+                <ion-input
+                  min="15"
+                  style="text-align: center"
+                  type="number"
+                  formControlName="earnedDiscount"
+                  required
+                ></ion-input>
+              </div>
+
+              <span
+                class="errorMessage"
+                *ngIf="isSubmitted && errorControl.earnedDiscount.errors?.min"
+              >
+                Min value should be 15
+              </span>
+
+              <span
+                class="errorMessage"
+                *ngIf="isSubmitted && errorControl.earnedDiscount.errors?.required"
+              >
+                Earned discount is required.
+              </span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-label
+                class="ion-text-wrap"
+                style="font-weight: bold; font-size: small"
+                >This is the fees you will charge when you act as a
+                volunteer.</ion-label
+              >
+            </ion-col>
+          </ion-row>
+
+          <div class="out-margin-radius">
+            <p class="text-radius">
+              <span style="font-weight: bold">Radius</span> :
+              {{userGroup.value.radiusValue / 1000}} Km
+            </p>
+            <div>
+              <ion-range
+                ticks="true"
+                formControlName="radiusValue"
+                value="1000"
+                step="100"
+                min="0"
+                max="2000"
+                mode="ios"
+              ></ion-range>
+            </div>
+            <span
+              class="errorMessage"
+              *ngIf="isSubmitted && errorControl.radiusValue.errors?.required"
+            >
+              Radius is required.
+            </span>
+          </div>
+
+          <ion-row>
+            <ion-col style="text-align: center">
+              <ion-button type="submit" class="stepper-btn">
+                Register
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+          <div class="breaker-btm" style="height: 20px"></div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+
+<ion-footer> </ion-footer>

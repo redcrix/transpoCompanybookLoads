@@ -5,3 +5,67 @@
   font-family: sans-serif;
   line-height: 25px;
 }
+
+.inputs {
+  background: darkred;
+  height: 40px;
+  /* width: 106px; */
+  border-radius: 7px;
+  color: white;
+}
+
+input#quantity {
+  background: none;
+  border: none;
+  padding-top: 9px;
+  padding-left: 6px;
+}
+
+.inputs.removic {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  background: none;
+  color: black;
+}
+ion-icon.remove-icn.md.hydrated {
+  display: contents;
+}
+
+ion-button.addButton.md.button.button-block.button-round.button-solid.ion-activatable.ion-focusable.hydrated {
+  width: 110px;
+  text-transform: capitalize;
+}
+
+p.title_ {
+  padding-left: 30px;
+  padding-right: 20px;
+  color: #424242;
+  font-family: Roboto-Light;
+  line-height: 25px;
+}
+
+img.icn-slider-companies {
+  height: 36px;
+  margin-bottom: -6px;
+}
+
+p.txt-ven-name {
+  font-family: Roboto-Light;
+  font-size: 10px;
+}
+
+ion-button.addButton.ios.button.button-block.button-round.button-solid.ion-activatable.ion-focusable.hydrated {
+  width: 110px;
+  text-transform: capitalize;
+}
+
+ion-icon.remove-icn.ios.hydrated {
+  display: contents;
+}
+
+input#name {
+  background: none;
+  border: none;
+  padding-top: 9px;
+  padding-left: 6px;
+}

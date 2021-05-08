@@ -1,0 +1,383 @@
+ion-content {
+  --ion-background-color: var(--ion-color-background);
+}
+
+.inputLabel {
+  color: gray;
+  margin-left: 20px;
+  padding-top: 21px !important;
+}
+
+ion-card {
+  background: white;
+}
+
+ion-item {
+  --background: white;
+}
+
+.errorMessage {
+  display: block;
+
+  text-align: center;
+  font-size: 12px;
+  color: #e76060;
+  white-space: initial;
+  padding-top: 22px;
+}
+
+ion-range {
+  --knob-background: var(--ion-color-primary);
+  --knob-border: 2px solid darkred;
+
+  --bar-background: darkred;
+  --bar-height: 4px;
+}
+.discount {
+  background: darkred;
+  color: var(--ion-color-primary);
+  padding-left: 5px;
+  left: 0%;
+  right: 0%;
+  top: 11%;
+  bottom: 0%;
+  box-shadow: -10px -10px 20px #989aa2, 10px 10px 20px darkred;
+  border-radius: 43px;
+  border: none;
+  height: 39px;
+  display: flex;
+  margin-top: 16px;
+}
+
+.inputs {
+  font-family: "Roboto-Light";
+  background: darkred;
+  color: var(--ion-color-primary);
+  padding-left: 5px;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  box-shadow: -10px -10px 20px #989aa2, 10px 10px 20px darkred;
+  border-radius: 43px;
+  border: none;
+  height: 39px;
+  display: flex;
+  margin-top: 16px;
+  padding-right: 10px;
+  padding-left: 14px;
+}
+
+ion-label.ion-text-wrap.sc-ion-label-md-h.sc-ion-label-md-s.md.hydrated {
+  color: var(--ion-color-text-gray);
+  font-family: "Roboto-Light";
+  margin-left: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 96%;
+  margin-top: 23px;
+}
+
+ion-label.ion-text-wrap.sc-ion-label-ios-h.sc-ion-label-ios-s.ios.hydrated {
+  color: var(--ion-color-text-gray);
+  font-family: "Roboto-Light";
+  margin-left: 8px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 96%;
+  margin-top: 23px;
+}
+
+button.update-location-btn-cntre-ui {
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: darkred;
+  box-shadow: -10px -10px 20px #989aa2, 10px 10px 20px darkred;
+  border-radius: 11px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 83%;
+  font-size: 16px;
+  padding-top: 4px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-family: "Roboto-Light";
+  color: gray;
+  margin-top: 15px;
+  text-transform: capitalize;
+  display: flow-root;
+  height: 30px;
+}
+
+ion-label.txt-percent-earned.sc-ion-label-md-h.sc-ion-label-md-s.md.hydrated {
+  color: var(--ion-color-primary);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  margin-top: 27px;
+}
+ion-label.txt-percent-earned.sc-ion-label-ios-h.sc-ion-label-ios-s.ios.hydrated {
+  color: var(--ion-color-primary);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  margin-top: 27px;
+}
+
+button.register-btn {
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: var(--ion-color-background-t);
+  box-shadow: -10px -10px 20px #989aa2, 10px 10px 20px darkred;
+  border-radius: 11px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 33px;
+  width: 71%;
+  font-size: 16px;
+  padding-top: 4px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-family: "Roboto-Light";
+  color: var(--ion-color-primary);
+  margin-top: 11px;
+  margin-bottom: 30px;
+}
+
+p.text-radius {
+  margin-left: 20px;
+  margin-bottom: -9px;
+  margin-top: 17px;
+  color: var(--ion-color-primary);
+}
+
+ion-card.custm-card-payment-mode.md.hydrated {
+  --background: darkred;
+  background: darkred;
+  color: #868e8c;
+  padding-top: 10px;
+}
+
+ion-card.custm-card-payment-mode.ios.hydrated {
+  --background: darkred;
+  background: darkred;
+  color: #868e8c;
+  padding-top: 10px;
+}
+
+ion-checkbox {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.payment-mode-container {
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: var(--ion-color-container-background);
+  box-shadow: -10px -10px 20px #313937,
+    10px 10px 20px var(--ion-color-background);
+  border-radius: 43px;
+  margin-left: 24px;
+  margin-bottom: 35px;
+  margin-right: 30px;
+  padding-top: 6px;
+  padding-right: 5px;
+  margin-top: 27px;
+  margin-left: 40px;
+  padding-bottom: 12px;
+  display: block;
+}
+
+.payment-mode-in {
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: darkred;
+  box-shadow: -10px -10px 20px #989aa2, 10px 10px 20px darkred;
+  border-radius: 20px;
+  width: 84px;
+  /* display: table-caption; */
+  height: 74px;
+}
+
+.container-payment-btn {
+  display: inline-grid;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: darkred;
+  box-shadow: -10px -10px 20px #989aa2, 10px 10px 20px darkred;
+  border-radius: 20px;
+  /* font-size: 7px !important; */
+  width: 60px;
+  height: 60px;
+  margin-top: 3px;
+}
+
+ion-label.mode-txt.sc-ion-label-ios-h.sc-ion-label-ios-s.ios.hydrated {
+  font-size: 11px !important;
+  margin-top: 3px;
+  line-height: 13px;
+  font-family: "Roboto-Light";
+  font-weight: bold;
+  color: gray;
+}
+
+ion-label.mode-txt.sc-ion-label-md-h.sc-ion-label-md-s.md.hydrated {
+  font-size: 11px !important;
+  margin-top: 3px;
+  line-height: 13px;
+  font-family: "Roboto-Light";
+  font-weight: bold;
+  color: gray;
+}
+
+ion-grid.out-margin.ios.hydrated {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+ion-grid.out-margin.md.hydrated {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+ion-input.sc-ion-input-md-h.sc-ion-input-md-s.md.hydrated.ng-dirty.ng-touched.has-value.ng-valid.ion-dirty.ion-touched.ion-valid {
+  color: #daeae6;
+  font-family: "Roboto-Light";
+}
+
+ion-input.sc-ion-input-ios-h.sc-ion-input-ios-s.ios.hydrated.ng-dirty.ng-touched.has-value.ng-valid.ion-dirty.ion-touched.ion-valid {
+  color: #daeae6;
+  font-family: "Roboto-Light";
+}
+
+// ==
+
+.cl-one {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bar-css {
+  width: 90px;
+  height: 3px;
+  /* left: 55px; */
+  /* top: 129px; */
+  background: #3c3d3f;
+  border-radius: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 56px;
+}
+
+p.txt-highlighted {
+  color: var(--ion-color-primary);
+  position: absolute;
+  margin-left: 16px;
+  margin-top: 31px;
+  font-family: "Roboto-Light";
+  font-size: 14px;
+}
+
+p.txt-title-stepper {
+  font-family: Roboto-Light;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 23px;
+  line-height: 32px;
+  letter-spacing: -0.4px;
+}
+
+ion-button.stepper-btn.ios.button.button-solid.ion-activatable.ion-focusable.hydrated {
+  bottom: 0%;
+  --background: darkred;
+  box-shadow: -10px -10px 20px #989aa2, 10px 10px 20px darkred;
+  border-radius: 11px;
+  width: 41%;
+  margin-top: 43px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(95, 203, 196, 1);
+  text-transform: none;
+  --border-radius: 11px;
+  height: 34px;
+  font-family: "Roboto-Light";
+}
+
+ion-button.stepper-btn.md.button.button-solid.ion-activatable.ion-focusable.hydrated {
+  bottom: 0%;
+  --background: darkred;
+  box-shadow: -10px -10px 20px #989aa2, 10px 10px 20px darkred;
+  border-radius: 11px;
+  width: 41%;
+  margin-top: 43px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: rgba(95, 203, 196, 1);
+  text-transform: none;
+  --border-radius: 11px;
+  height: 34px;
+  font-family: "Roboto-Light";
+}
+
+.main-container {
+  box-shadow: 10px 10px 20px #191a1a, -10px -10px 20px rgb(93 86 86 / 25%);
+}
+.step_one {
+  padding-left: 29px;
+  padding-right: 29px;
+}
+
+.bar-css.highlighted {
+  background: var(--ion-color-primary);
+  box-shadow: 0px 2px 9px 0px #888888;
+}
+
+.txt-highlighted {
+  animation-name: txt-highlighted;
+  animation-duration: 2s;
+}
+
+@keyframes txt-highlighted {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.bar-css {
+  animation-name: bar-css;
+  animation-duration: 2s;
+}
+
+@keyframes bar-css {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

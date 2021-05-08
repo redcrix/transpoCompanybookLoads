@@ -8,9 +8,37 @@
 </ion-header>
 
 <ion-content>
-  <p class="title_">
-    POST YOUR LOAD TO GET MORE SUITABLE TRUCK ]
-  </p>
+  <p class="title_">POST YOUR REQUIREMENTS TO GET A QUOTE.</p>
+
+  <ion-row>
+    <ion-col>
+      <div class="slider-img">
+        <img src="../../assets/icon/favicon.png" class="icn-slider-companies" />
+        <p class="txt-ven-name">InWays Cargos Pvt Ltd.</p>
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <div class="slider-img">
+        <img src="../../assets/icon/favicon.png" class="icn-slider-companies" />
+        <p class="txt-ven-name">Jai Durga Logistics.</p>
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <div class="slider-img">
+        <img src="../../assets/icon/favicon.png" class="icn-slider-companies" />
+        <p class="txt-ven-name">BlueLine.</p>
+      </div>
+    </ion-col>
+
+    <ion-col>
+      <div class="slider-img">
+        <img src="../../assets/icon/favicon.png" class="icn-slider-companies" />
+        <p class="txt-ven-name">BlueWave.</p>
+      </div>
+    </ion-col>
+  </ion-row>
   <form [formGroup]="form_detail">
     <ion-item>
       <ion-label position="fixed">Enter Source City</ion-label>
@@ -99,17 +127,176 @@
         formControlName="ScheduledDate"
       ></ion-input>
     </ion-item>
+
+    <div>
+      <div class="ion-row-cls">
+        <ion-grid
+          class="grid-custom"
+          formArrayName="loadList"
+          *ngFor="let item of form_detail.get('loadList')['controls'] ; let i=index"
+        >
+          <ion-row size="12" class="custom-row-txt" [formGroupName]="i">
+            <ion-col size="4">
+              <div class="inputs">
+                <input
+                  style="padding-left: 8px !important"
+                  type="text"
+                  placeholder="Item name"
+                  id="name"
+                  formControlName="name"
+                />
+              </div>
+              <span
+                *ngIf="isSubmitted && item.get('name').invalid"
+                style="display: block; text-align: center"
+              >
+                <span class="error" offset="1" size="10">
+                  Item name is required
+                </span>
+              </span>
+            </ion-col>
+            <ion-col size="2">
+              <div class="inputs">
+                <input
+                  type="text"
+                  placeholder="Qty"
+                  id="quantity"
+                  formControlName="quantity"
+                />
+              </div>
+              <span
+                *ngIf="isSubmitted && item.get('quantity').invalid"
+                style="display: block; text-align: center"
+              >
+                <span class="error" offset="1" size="10">
+                  Qty is required
+                </span>
+              </span>
+            </ion-col>
+            <ion-col size="4">
+              <div class="inputs">
+                <ion-select
+                  interface="popover"
+                  placeholder="Unit"
+                  id="branch"
+                  formControlName="branch"
+                >
+                  <ion-select-option lines="none" value="kgs"
+                    >Kilograms</ion-select-option
+                  >
+                  <ion-select-option lines="none" value="grams"
+                    >Grams</ion-select-option
+                  >
+                  <ion-select-option lines="none" value="lit"
+                    >Liters</ion-select-option
+                  >
+                  <ion-select-option lines="none" value="packs"
+                    >Packet</ion-select-option
+                  >
+                  <ion-select-option lines="none" value="pieces"
+                    >Pieces</ion-select-option
+                  >
+                </ion-select>
+              </div>
+              <span
+                *ngIf="isSubmitted && item.get('branch').invalid"
+                style="display: block; text-align: center"
+              >
+                <span class="error" offset="1" size="10">
+                  Item unit is required
+                </span>
+              </span>
+            </ion-col>
+
+            <ion-col size="2">
+              <div class="inputs removic">
+                <ion-icon
+                  class="remove-icn"
+                  style="padding-top: 50%; padding-right: 50%"
+                  name="remove-circle"
+                  (click)="removeItem(i)"
+                ></ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </div>
+
+    <ion-row>
+      <ion-col style="text-align: center">
+        <div style="text-align: center">
+          <ion-button
+            shape="round"
+            class="addButton"
+            expand="block"
+            (click)="addItem()"
+            >Add More</ion-button
+          >
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="cus-price-row" style="margin-top: 15px">
+      <ion-col style="text-align: center">
+        <ion-row class="ion-no-padding inp-container">
+          <ion-col size="9" class="ion-padding">
+            <ion-label style="color: #868e8c; margin-top: 4px">
+              Enter Approximate bill
+            </ion-label>
+          </ion-col>
+          <ion-col size="3">
+            <div class="inputs">
+              <ion-input
+                type="number"
+                formControlName="billAmount"
+                id="billAmount"
+                class="billAmount"
+                placeholder="&#x20B9;"
+              ></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="isSubmitted && formErrors.billAmount">
+          <ion-col class="error" offset="1" size="10"> required </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="text-align: center" class="col-cus-row">
+        <div style="display: flex" class="ion-margin-bottom">
+          <ion-button
+            shape="round"
+            class="customButton ion-margin-start"
+            expand="full"
+            (click)="saveItem()"
+          >
+            Save
+          </ion-button>
+          <ion-button
+            type="submit"
+            (click)="onSubmit()"
+            shape="round"
+            class="customButton ion-margin-end"
+            expand="full"
+          >
+            Continue
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
   </form>
 
   <div class="instruction_">
     <p class="p_inst">
-      Note: Before doing any payment to truck owner / Transporter Please call us
-      on our Number : 99880 98200 for verification of user.
+      Note: Before doing any payment to the Transporter, Please call us on our
+      Number : 99880 98200.
     </p>
-    <p class="p_inst">
-      If you doing any payment without informing us then RED Transports will be
-      not responsible for reliability of truck owner / transporter.
-    </p>
+    <!-- <p class="p_inst">
+      If you doing any payment without informing us then Bluewave Cargos will be
+      not be responsible for any reliability of the tran
+    </p> -->
   </div>
 </ion-content>
 

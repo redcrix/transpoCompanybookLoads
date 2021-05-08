@@ -24,8 +24,8 @@ export class AppComponent {
     },
     // for user
     {
-      title: "Find Transporters",
-      url: "/find-truck-driver",
+      title: "Find Vendors",
+      url: "/vendors-listing",
       icon: "list",
     },
 
@@ -56,8 +56,8 @@ export class AppComponent {
     },
 
     {
-      title: "Truck Driver Register",
-      url: "/truck-driver-registeration",
+      title: "Vendor Register",
+      url: "/vendor-registeration",
       icon: "list",
     },
     {

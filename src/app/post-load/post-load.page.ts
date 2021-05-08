@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormArray, Validators } from "@angular/forms";
+import { FormBuilder, FormGroup, FormArray, Validators } from "@angular/forms";
 import { LoadingController } from "@ionic/angular";
 import { ApiService } from "../api.service";
 import { CommonService } from "../common.function";
+import { AlertController } from "@ionic/angular";
 
 @Component({
   selector: "app-post-load",
@@ -13,11 +14,24 @@ export class PostLoadPage implements OnInit {
   form_detail: any;
   material_type: any;
   truck_type: any;
+
+  formErrors = {
+    billAmount: "",
+  };
+  public isSubmitted = false;
+
+  validationMessages = {
+    billAmount: {
+      required: "Bill amount is required",
+    },
+  };
+
   constructor(
     private fb: FormBuilder,
     public loadingController: LoadingController,
     public api: ApiService,
-    public config: CommonService
+    public config: CommonService,
+    private alertCtrl: AlertController
   ) {
     this.material_type = [
       {
@@ -227,6 +241,7 @@ export class PostLoadPage implements OnInit {
     ];
 
     this.form_detail = this.fb.group({
+      loadList: this.fb.array([this.addItemFormGroup()]),
       user_id: [""],
       created_by: [""],
       source: ["", Validators.required],
@@ -238,10 +253,51 @@ export class PostLoadPage implements OnInit {
       offeredPrice: [""],
       ScheduledDate: [""],
       SpecialInstructions: [""],
+      billAmount: [""],
+    });
+
+    this.form_detail.valueChanges.subscribe((data) => {
+      this.logValidationErrors(this.form_detail);
     });
   }
 
   ngOnInit() {}
+
+  addItemFormGroup(): FormGroup {
+    return this.fb.group({
+      name: ["", Validators.required],
+      quantity: ["", Validators.required],
+      branch: ["", Validators.required],
+      isAvailable: [true],
+    });
+  }
+
+  logValidationErrors(group: FormGroup = this.form_detail) {
+    Object.keys(group.controls).forEach((key: string) => {
+      const abstractControl = group.get(key);
+      if (abstractControl instanceof FormGroup) {
+        this.logValidationErrors(abstractControl);
+      } else {
+        this.formErrors[key] = "";
+        if (abstractControl && !abstractControl.valid) {
+          const messages = this.validationMessages[key];
+
+          for (const errorKey in abstractControl.errors) {
+            if (errorKey) {
+              this.formErrors[key] = messages[errorKey];
+            }
+          }
+        }
+      }
+    });
+  }
+
+  addItem() {
+    this.isSubmitted = false;
+    (this.form_detail.get("loadList") as FormArray).push(
+      this.addItemFormGroup()
+    );
+  }
 
   async Post_load() {
     let Loading_ = await this.loadingController.create({
@@ -270,5 +326,48 @@ export class PostLoadPage implements OnInit {
         Loading_.dismiss();
       }
     );
+  }
+
+  removeItem(index) {
+    if (this.form_detail.value.loadList.length > 1) {
+      (this.form_detail.get("loadList") as FormArray).removeAt(index);
+      this.isSubmitted = false;
+    }
+  }
+
+  onSubmit() {
+    console.log("Log----");
+
+    this.presentPrompt();
+  }
+
+  async presentPrompt() {
+    const promptWindow = await this.alertCtrl.create({
+      header: "Shopping List Name",
+      inputs: [
+        {
+          name: "LoadListValue",
+          type: "text",
+          placeholder: "Enter name",
+        },
+      ],
+      buttons: [
+        {
+          text: "Okay",
+          role: "OK",
+          handler: (value) => {
+            this.form_detail.setName(value.LoadListValue);
+            // this.postcall();
+          },
+        },
+        {
+          text: "Cancel",
+          handler: () => {
+            console.log("Cancelled");
+          },
+        },
+      ],
+    });
+    await promptWindow.present();
   }
 }

@@ -15,6 +15,49 @@
   height: 70vh;
 }
 
+p.label-p-in {
+  font-size: 11px;
+  color: gray;
+}
+.content_ {
+  background: darkred;
+}
+
+button.sr-icn-ready {
+  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-top: 43px;
+  background: black;
+  color: white;
+  border-radius: 60px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.txt_ {
+  font-family: Roboto-Regular;
+  color: darkred;
+}
+
+p.p_txt__ {
+  font-family: Roboto-Regular;
+  color: darkred;
+}
+
+p.label-p-in {
+  font-size: 11px;
+  color: black;
+  font-family: serif;
+}
+
+.logos_ {
+  margin-top: 53px;
+  margin-bottom: 30px;
+}
+
 .map-wrapper {
   position: relative;
 
@@ -69,10 +112,38 @@ p.p__ {
   margin-top: -10px;
   color: #6b6b6b;
 }
+
+.searchcontainer {
+  margin-top: 40px;
+}
+
 .intro {
   padding-left: 30px;
   padding-right: 20px;
-  color: cadetblue;
-  font-family: sans-serif;
+  color: #424242;
+  font-family: Roboto-Light;
+  line-height: 25px;
+}
+.smal-box-sel.Air {
+  font-size: 12px;
+  font-family: "Roboto-Light";
+  color: lightblue;
+
+  display: grid;
+}
+
+.smal-box-sel.Land {
+  /* font-size: 12px; */
+  font-family: "Roboto-Light";
+  color: #ffce00;
+  font-size: 12px;
+  display: grid;
+}
+
+p.title-main {
+  /* padding-left: 30px; */
+  /* padding-right: 20px; */
+  color: #424242;
+  font-family: Roboto-Light;
   line-height: 25px;
 }
